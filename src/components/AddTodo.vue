@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit="addTodo">
+    <form @submit.prevent="addTodo">
       <input type="text" v-model="title" name="title" placeholder="Add todo.." />
       <input type="submit" value="Submit" class="btn" />
     </form>
@@ -18,8 +18,10 @@ export default {
     };
   },
   methods: {
-    addTodo(e) {
-      e.preventDefault();
+    addTodo() {
+      // addTodo(e) {
+      // e.preventDefault();
+      // ^ not necesery because @submit.PREVENT in form
       const newTodo = {
         id: uuid.v4(),
         title: this.title,
